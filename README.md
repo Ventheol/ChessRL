@@ -268,5 +268,11 @@ The project is an ongoing experiment in understanding how intelligent agents can
 
 This project is released under the MIT License.
 
-```
-```
+---
+## Demo
+
+A sample gameplay session:
+
+![ChessRL Gameplay](assets/gameplay.gif)
+
+The current agent is still under development. It can play complete games but still makes many mistakes while learning.
