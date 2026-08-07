@@ -6,7 +6,18 @@ This project explores how reinforcement learning can be applied to chess by impl
 
 The goal of this project is not to create a world-class chess engine, but to gain practical experience with reinforcement learning engineering and deep learning system design.
 
-🚧 **This project is under active development.**
+🛑 **Project Status: Paused / Concluded**
+
+This project is being shared as-is. Development has stopped, primarily due to hardware limitations (GTX 1650 4GB, i5-4570, 16GB RAM) that made meaningful self-play training impractical — MCTS simulation and rollout generation are CPU-heavy and the training loop would have needed far more compute and time than this machine could reasonably provide. Rather than let it sit unfinished indefinitely, I'm releasing it in its current state, flaws included.
+
+Known limitations at time of release:
+
+* Training was not run to convergence — the agent has not seen enough self-play games to develop strong chess understanding.
+* Some parts of the RL pipeline (e.g. GAE/advantage usage) may not be fully wired into the final loss calculation and could use a review pass.
+* MCTS integration remains experimental rather than fully tuned.
+* Performance/strength has not been rigorously benchmarked.
+
+I'm moving on to a new project, but the code, architecture, and lessons learned here are documented below for anyone who wants to pick it up, learn from it, or fork it.
 
 ---
 
@@ -29,14 +40,13 @@ This project is also a portfolio project demonstrating practical AI engineering 
 
 ## Reinforcement Learning Pipeline
 
-Implemented a PPO-based reinforcement learning pipeline including:
+Implemented a PPO-inspired reinforcement learning pipeline including:
 
-* Proximal Policy Optimization (PPO)
 * Actor-Critic architecture
 * Rollout buffer
-* Generalized Advantage Estimation (GAE)
-* Policy optimization with clipped objective
+* Generalized Advantage Estimation (GAE) module
 * Self-play training support
+* MCTS-guided move selection
 
 ---
 
@@ -71,7 +81,7 @@ File:
 train.py
 ```
 
-The agent learns through interaction using PPO.
+The agent learns through self-play interaction, guided by MCTS.
 
 The agent supports:
 
@@ -170,7 +180,7 @@ Current status:
 
 * MCTS prototype implemented
 * Used as an experimental search component
-* Further integration and improvement are planned
+* Further integration and improvement were planned, but not completed before the project was paused
 
 Implementation:
 
@@ -226,24 +236,38 @@ Implemented:
 ✅ Chess board tensor representation
 ✅ CNN + Residual network architecture
 ✅ Actor-Critic model
-✅ PPO training pipeline
-✅ GAE advantage calculation
+✅ Self-play training loop
+✅ GAE module (calculation implemented; full integration into the loss not finalized)
 ✅ Rollout buffer
 ✅ Legal move masking
-✅ Self-play support
 ✅ Human vs AI gameplay
 ✅ Experimental MCTS implementation
+
+Not completed:
+
+❌ Full training run to convergence
+❌ Playing-strength evaluation / benchmarking
+❌ Finalized advantage-weighted loss
+
+---
+
+# Why This Project Was Paused
+
+This project was built and trained on modest consumer hardware (GTX 1650 4GB, i5-4570, 16GB RAM). Self-play RL for chess — running MCTS simulations plus neural network training — is compute-intensive, and this setup wasn't able to produce enough training throughput to get the agent to a strong or fully validated state in a reasonable timeframe.
+
+Rather than leave the repository without an explanation, I'm documenting this openly: the pipeline works end-to-end, but the *results* (playing strength, training stability, full algorithm correctness) are unfinished. I'm choosing to conclude this project here and move on to something new, and may revisit it in the future with better hardware or a lighter-weight training approach.
 
 ---
 
 # Future Improvements
 
-Planned improvements:
+If picked back up (by me or anyone else), planned improvements would include:
 
-* Add evaluation metrics
-* Measure playing strength
+* Finish wiring advantage-weighted loss (or simplify to a pure AlphaZero-style policy distillation objective)
+* Reduce network size / simulation count to better fit limited hardware
+* Add evaluation metrics and measure playing strength
 * Improve self-play stability
-* Tune PPO hyperparameters
+* Tune hyperparameters
 * Improve MCTS integration
 * Compare different training strategies
 * Create better gameplay visualization
@@ -259,8 +283,9 @@ Building this project helped explore practical challenges in reinforcement learn
 * Debugging unstable RL training
 * Understanding policy/value networks
 * Combining learning-based methods with search algorithms
+* Scoping an ML project realistically against available hardware
 
-The project is an ongoing experiment in understanding how intelligent agents can learn complex decision-making problems.
+The project is a snapshot of an ongoing learning process — closed here for now, not because it "worked," but because building it taught what it set out to teach.
 
 ---
 
@@ -275,4 +300,4 @@ A sample gameplay session:
 
 ![ChessRL Gameplay](assets/gameplay.gif)
 
-The current agent is still under development. It can play complete games but still makes many mistakes while learning.
+The agent in this demo is not fully trained. It can play complete games but still makes many mistakes, and playing strength has not been formally evaluated.
