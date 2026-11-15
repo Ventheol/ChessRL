@@ -1,3 +1,5 @@
+[English](README.md) | [فارسی](README_FA.md)
+
 # ChessRL ♟️
 
 A reinforcement learning chess agent built from scratch using **PyTorch**.
