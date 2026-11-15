@@ -1,3 +1,5 @@
+[English](README.md) | [فارسی](README_FA.md)
+
 # ChessRL ♟️
 
 یک عامل شطرنج مبتنی بر یادگیری تقویتی که با استفاده از **PyTorch** ساخته
