@@ -4,6 +4,14 @@
 
 A reinforcement learning chess agent built from scratch using **PyTorch**.
 
+## Demo
+
+A sample gameplay session:
+
+![ChessRL Gameplay](assets/gameplay.gif)
+
+The agent in this demo is not fully trained. It can play complete games but still makes many mistakes, and playing strength has not been formally evaluated.
+
 This project explores how reinforcement learning can be applied to chess by implementing the full pipeline: environment design, neural network architecture, PPO training, self-play, and search experiments.
 
 The goal of this project is not to create a world-class chess engine, but to gain practical experience with reinforcement learning engineering and deep learning system design.
@@ -296,10 +304,4 @@ The project is a snapshot of an ongoing learning process — closed here for now
 This project is released under the MIT License.
 
 ---
-## Demo
 
-A sample gameplay session:
-
-![ChessRL Gameplay](assets/gameplay.gif)
-
-The agent in this demo is not fully trained. It can play complete games but still makes many mistakes, and playing strength has not been formally evaluated.
